@@ -1,0 +1,406 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1552B478813B81ED1DC1CD47 /* CarpschoolApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031647165056EF8B096EE51E /* CarpschoolApp.swift */; };
+		2A50AD4D7F6E1A4666FCDFB0 /* BoardingPINView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A1D61084B56657CA7627BF /* BoardingPINView.swift */; };
+		3DD3FDDC9C61C0C4BC906567 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E296E6B397EE8208AA55896 /* CoreLocation.framework */; };
+		51F4D1C5758D5B414017519B /* LocationSnapshotService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4F7EA8F314680C77B0C465 /* LocationSnapshotService.swift */; };
+		5B89F44E58675CEAE617C342 /* SchoolSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA2C976E4A846731B4E346B /* SchoolSelectView.swift */; };
+		7163828416CB69496EA43331 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = 4D85C76A71C0BC476C6E82BA /* SocketIO */; };
+		79E49559145ABDA07F871E1B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACC5B9A13A47E0707E0D832F /* MapKit.framework */; };
+		85ADFB658940CFF65185E68D /* NegotiationChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B379441ABBDF8DFBC49AD7D /* NegotiationChatView.swift */; };
+		E5357FCA86438C63547E134E /* CarpoolModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC5274E72126EDE526B30C5 /* CarpoolModels.swift */; };
+		E5BF0CD696A6B40EDC54F06F /* HomesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7743D751018C01335126B4E6 /* HomesView.swift */; };
+		E9871C213352F7ABF480FB96 /* CorridorMatchingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA9BBBD3594958D9F6FF8EA /* CorridorMatchingView.swift */; };
+		F151227B5E2C183B5D404DC1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A182F4E3E7890039493B2F7 /* ContentView.swift */; };
+		F7742402CAA23DF2C57EEE3D /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D287F9A7DF843B42003D4D /* NetworkService.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		031647165056EF8B096EE51E /* CarpschoolApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarpschoolApp.swift; sourceTree = "<group>"; };
+		1A182F4E3E7890039493B2F7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		21A1D61084B56657CA7627BF /* BoardingPINView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardingPINView.swift; sourceTree = "<group>"; };
+		2B379441ABBDF8DFBC49AD7D /* NegotiationChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NegotiationChatView.swift; sourceTree = "<group>"; };
+		2E296E6B397EE8208AA55896 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		5D4F7EA8F314680C77B0C465 /* LocationSnapshotService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSnapshotService.swift; sourceTree = "<group>"; };
+		6EC5274E72126EDE526B30C5 /* CarpoolModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarpoolModels.swift; sourceTree = "<group>"; };
+		7743D751018C01335126B4E6 /* HomesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomesView.swift; sourceTree = "<group>"; };
+		8CA921DC6FB160C0DCB8602E /* Carpschool.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Carpschool.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DA2C976E4A846731B4E346B /* SchoolSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolSelectView.swift; sourceTree = "<group>"; };
+		ACA9BBBD3594958D9F6FF8EA /* CorridorMatchingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorridorMatchingView.swift; sourceTree = "<group>"; };
+		ACC5B9A13A47E0707E0D832F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		C5D287F9A7DF843B42003D4D /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D798D78A30577F97F02316E4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				79E49559145ABDA07F871E1B /* MapKit.framework in Frameworks */,
+				3DD3FDDC9C61C0C4BC906567 /* CoreLocation.framework in Frameworks */,
+				7163828416CB69496EA43331 /* SocketIO in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0B7C5F9A7CF9EEBF834AE440 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				5D4F7EA8F314680C77B0C465 /* LocationSnapshotService.swift */,
+				C5D287F9A7DF843B42003D4D /* NetworkService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		5C03CF257096BF5356DE75CA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2E296E6B397EE8208AA55896 /* CoreLocation.framework */,
+				ACC5B9A13A47E0707E0D832F /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6E18802A49B9B52BF06193EF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8CA921DC6FB160C0DCB8602E /* Carpschool.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8013D0600FB4EDD0B3EAAF27 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6EC5274E72126EDE526B30C5 /* CarpoolModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AB53AE0A5CE5863ECCDA06D8 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				031647165056EF8B096EE51E /* CarpschoolApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		CAE3080E2F67B3A50D46D696 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				21A1D61084B56657CA7627BF /* BoardingPINView.swift */,
+				1A182F4E3E7890039493B2F7 /* ContentView.swift */,
+				ACA9BBBD3594958D9F6FF8EA /* CorridorMatchingView.swift */,
+				7743D751018C01335126B4E6 /* HomesView.swift */,
+				2B379441ABBDF8DFBC49AD7D /* NegotiationChatView.swift */,
+				9DA2C976E4A846731B4E346B /* SchoolSelectView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CF3384529E27A2EFE8058536 = {
+			isa = PBXGroup;
+			children = (
+				E2606EB4045F358C23AD7844 /* Carpschool */,
+				5C03CF257096BF5356DE75CA /* Frameworks */,
+				6E18802A49B9B52BF06193EF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E2606EB4045F358C23AD7844 /* Carpschool */ = {
+			isa = PBXGroup;
+			children = (
+				AB53AE0A5CE5863ECCDA06D8 /* App */,
+				8013D0600FB4EDD0B3EAAF27 /* Models */,
+				0B7C5F9A7CF9EEBF834AE440 /* Services */,
+				CAE3080E2F67B3A50D46D696 /* Views */,
+			);
+			path = Carpschool;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6E5D63579F704F540970B7CA /* Carpschool */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 05873144ABE38AD5697AA354 /* Build configuration list for PBXNativeTarget "Carpschool" */;
+			buildPhases = (
+				0B6CCB8911F45C842C5D91FF /* Sources */,
+				D798D78A30577F97F02316E4 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Carpschool;
+			packageProductDependencies = (
+				4D85C76A71C0BC476C6E82BA /* SocketIO */,
+			);
+			productName = Carpschool;
+			productReference = 8CA921DC6FB160C0DCB8602E /* Carpschool.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4E08B5A31775AFBCD21E8686 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+			};
+			buildConfigurationList = 3E7F374F8F8ADF1F6A165281 /* Build configuration list for PBXProject "Carpschool" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = CF3384529E27A2EFE8058536;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				67DEB45D7103E67AAB8100C7 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */,
+			);
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6E5D63579F704F540970B7CA /* Carpschool */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0B6CCB8911F45C842C5D91FF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A50AD4D7F6E1A4666FCDFB0 /* BoardingPINView.swift in Sources */,
+				E5357FCA86438C63547E134E /* CarpoolModels.swift in Sources */,
+				1552B478813B81ED1DC1CD47 /* CarpschoolApp.swift in Sources */,
+				F151227B5E2C183B5D404DC1 /* ContentView.swift in Sources */,
+				E9871C213352F7ABF480FB96 /* CorridorMatchingView.swift in Sources */,
+				E5BF0CD696A6B40EDC54F06F /* HomesView.swift in Sources */,
+				51F4D1C5758D5B414017519B /* LocationSnapshotService.swift in Sources */,
+				85ADFB658940CFF65185E68D /* NegotiationChatView.swift in Sources */,
+				F7742402CAA23DF2C57EEE3D /* NetworkService.swift in Sources */,
+				5B89F44E58675CEAE617C342 /* SchoolSelectView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		146267473256D480261218C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 2.0.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.10;
+			};
+			name = Debug;
+		};
+		45A24DF938D003AC237DE0CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_KEY_CFBundleDisplayName = Carpschool;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Carpschool uses your location only for discrete boarding and arrival verification snapshots.";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ca.carpschool.ios;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4FA1A468749DF080AD2577AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_KEY_CFBundleDisplayName = Carpschool;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Carpschool uses your location only for discrete boarding and arrival verification snapshots.";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ca.carpschool.ios;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		887665738DDFAE7B313D9318 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 2.0.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.10;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		05873144ABE38AD5697AA354 /* Build configuration list for PBXNativeTarget "Carpschool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				45A24DF938D003AC237DE0CF /* Debug */,
+				4FA1A468749DF080AD2577AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		3E7F374F8F8ADF1F6A165281 /* Build configuration list for PBXProject "Carpschool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				146267473256D480261218C3 /* Debug */,
+				887665738DDFAE7B313D9318 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		67DEB45D7103E67AAB8100C7 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/socketio/socket.io-client-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 16.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4D85C76A71C0BC476C6E82BA /* SocketIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67DEB45D7103E67AAB8100C7 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */;
+			productName = SocketIO;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 4E08B5A31775AFBCD21E8686 /* Project object */;
+}

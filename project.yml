@@ -1,0 +1,30 @@
+name: Carpschool
+options:
+  bundleIdPrefix: ca.carpschool
+  deploymentTarget:
+    iOS: "17.0"
+settings:
+  SWIFT_VERSION: "5.10"
+  GENERATE_INFOPLIST_FILE: YES
+  CURRENT_PROJECT_VERSION: 1
+  MARKETING_VERSION: "2.0.0"
+
+packages:
+  SocketIO:
+    url: https://github.com/socketio/socket.io-client-swift
+    from: 16.1.0
+
+targets:
+  Carpschool:
+    type: application
+    platform: iOS
+    sources:
+      - Carpschool
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: ca.carpschool.ios
+      INFOPLIST_KEY_CFBundleDisplayName: "Carpschool"
+      INFOPLIST_KEY_NSLocationWhenInUseUsageDescription: "Carpschool uses your location only for discrete boarding and arrival verification snapshots."
+    dependencies:
+      - sdk: MapKit.framework
+      - sdk: CoreLocation.framework
+      - package: SocketIO
