@@ -8,13 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		1552B478813B81ED1DC1CD47 /* CarpschoolApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031647165056EF8B096EE51E /* CarpschoolApp.swift */; };
+		20F020D7AA59094775A9D9BF /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD007D5D09F855AA3EEE919 /* AppState.swift */; };
+		210B7FEE2E2B161AF7A04853 /* NegotiationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7664D196A0E41CDB04FCF092 /* NegotiationListView.swift */; };
 		2A50AD4D7F6E1A4666FCDFB0 /* BoardingPINView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A1D61084B56657CA7627BF /* BoardingPINView.swift */; };
 		3DD3FDDC9C61C0C4BC906567 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E296E6B397EE8208AA55896 /* CoreLocation.framework */; };
 		51F4D1C5758D5B414017519B /* LocationSnapshotService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4F7EA8F314680C77B0C465 /* LocationSnapshotService.swift */; };
 		5B89F44E58675CEAE617C342 /* SchoolSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA2C976E4A846731B4E346B /* SchoolSelectView.swift */; };
 		7163828416CB69496EA43331 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = 4D85C76A71C0BC476C6E82BA /* SocketIO */; };
+		71EADC188897002F6CFB1CBC /* ClerkKitUI in Frameworks */ = {isa = PBXBuildFile; productRef = 45B0249BF68A60F0E4CBA3CD /* ClerkKitUI */; };
+		78C6040A06D0771AD1FCFB55 /* LocationSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11F2A1DE8801B76B1EAA925 /* LocationSearchService.swift */; };
 		79E49559145ABDA07F871E1B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACC5B9A13A47E0707E0D832F /* MapKit.framework */; };
 		85ADFB658940CFF65185E68D /* NegotiationChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B379441ABBDF8DFBC49AD7D /* NegotiationChatView.swift */; };
+		941682158365CC2F5146D775 /* RiderApplicationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A18C262588640C7FC1E1377 /* RiderApplicationsView.swift */; };
+		A6081A5FE88A94F34DD9D6D1 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4453EB9794C81D07C54D8404 /* OnboardingView.swift */; };
+		A74EBE9D370907D4041DB020 /* ClerkKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7693DA1674A4BD198AC0E723 /* ClerkKit */; };
+		E37168A078765AFA10B9DD50 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FFCF0F046BB7AD79E035F6 /* ProfileView.swift */; };
 		E5357FCA86438C63547E134E /* CarpoolModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC5274E72126EDE526B30C5 /* CarpoolModels.swift */; };
 		E5BF0CD696A6B40EDC54F06F /* HomesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7743D751018C01335126B4E6 /* HomesView.swift */; };
 		E9871C213352F7ABF480FB96 /* CorridorMatchingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA9BBBD3594958D9F6FF8EA /* CorridorMatchingView.swift */; };
@@ -28,13 +36,20 @@
 		21A1D61084B56657CA7627BF /* BoardingPINView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardingPINView.swift; sourceTree = "<group>"; };
 		2B379441ABBDF8DFBC49AD7D /* NegotiationChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NegotiationChatView.swift; sourceTree = "<group>"; };
 		2E296E6B397EE8208AA55896 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		4453EB9794C81D07C54D8404 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		4AD007D5D09F855AA3EEE919 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		5D4F7EA8F314680C77B0C465 /* LocationSnapshotService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSnapshotService.swift; sourceTree = "<group>"; };
+		6A18C262588640C7FC1E1377 /* RiderApplicationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiderApplicationsView.swift; sourceTree = "<group>"; };
 		6EC5274E72126EDE526B30C5 /* CarpoolModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarpoolModels.swift; sourceTree = "<group>"; };
+		7664D196A0E41CDB04FCF092 /* NegotiationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NegotiationListView.swift; sourceTree = "<group>"; };
 		7743D751018C01335126B4E6 /* HomesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomesView.swift; sourceTree = "<group>"; };
+		840A15D37D6C3B6DAFEA70C3 /* Carpschool.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Carpschool.entitlements; sourceTree = "<group>"; };
 		8CA921DC6FB160C0DCB8602E /* Carpschool.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Carpschool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DA2C976E4A846731B4E346B /* SchoolSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolSelectView.swift; sourceTree = "<group>"; };
+		A11F2A1DE8801B76B1EAA925 /* LocationSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchService.swift; sourceTree = "<group>"; };
 		ACA9BBBD3594958D9F6FF8EA /* CorridorMatchingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorridorMatchingView.swift; sourceTree = "<group>"; };
 		ACC5B9A13A47E0707E0D832F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		B5FFCF0F046BB7AD79E035F6 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		C5D287F9A7DF843B42003D4D /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -46,6 +61,8 @@
 				79E49559145ABDA07F871E1B /* MapKit.framework in Frameworks */,
 				3DD3FDDC9C61C0C4BC906567 /* CoreLocation.framework in Frameworks */,
 				7163828416CB69496EA43331 /* SocketIO in Frameworks */,
+				A74EBE9D370907D4041DB020 /* ClerkKit in Frameworks */,
+				71EADC188897002F6CFB1CBC /* ClerkKitUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,6 +72,7 @@
 		0B7C5F9A7CF9EEBF834AE440 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				A11F2A1DE8801B76B1EAA925 /* LocationSearchService.swift */,
 				5D4F7EA8F314680C77B0C465 /* LocationSnapshotService.swift */,
 				C5D287F9A7DF843B42003D4D /* NetworkService.swift */,
 			);
@@ -81,6 +99,7 @@
 		8013D0600FB4EDD0B3EAAF27 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4AD007D5D09F855AA3EEE919 /* AppState.swift */,
 				6EC5274E72126EDE526B30C5 /* CarpoolModels.swift */,
 			);
 			path = Models;
@@ -102,6 +121,10 @@
 				ACA9BBBD3594958D9F6FF8EA /* CorridorMatchingView.swift */,
 				7743D751018C01335126B4E6 /* HomesView.swift */,
 				2B379441ABBDF8DFBC49AD7D /* NegotiationChatView.swift */,
+				7664D196A0E41CDB04FCF092 /* NegotiationListView.swift */,
+				4453EB9794C81D07C54D8404 /* OnboardingView.swift */,
+				B5FFCF0F046BB7AD79E035F6 /* ProfileView.swift */,
+				6A18C262588640C7FC1E1377 /* RiderApplicationsView.swift */,
 				9DA2C976E4A846731B4E346B /* SchoolSelectView.swift */,
 			);
 			path = Views;
@@ -119,6 +142,7 @@
 		E2606EB4045F358C23AD7844 /* Carpschool */ = {
 			isa = PBXGroup;
 			children = (
+				840A15D37D6C3B6DAFEA70C3 /* Carpschool.entitlements */,
 				AB53AE0A5CE5863ECCDA06D8 /* App */,
 				8013D0600FB4EDD0B3EAAF27 /* Models */,
 				0B7C5F9A7CF9EEBF834AE440 /* Services */,
@@ -144,6 +168,8 @@
 			name = Carpschool;
 			packageProductDependencies = (
 				4D85C76A71C0BC476C6E82BA /* SocketIO */,
+				7693DA1674A4BD198AC0E723 /* ClerkKit */,
+				45B0249BF68A60F0E4CBA3CD /* ClerkKitUI */,
 			);
 			productName = Carpschool;
 			productReference = 8CA921DC6FB160C0DCB8602E /* Carpschool.app */;
@@ -169,6 +195,7 @@
 			mainGroup = CF3384529E27A2EFE8058536;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
+				51A5B06A7777D8B6E6A9EDD1 /* XCRemoteSwiftPackageReference "clerk-ios" */,
 				67DEB45D7103E67AAB8100C7 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */,
 			);
 			preferredProjectObjectVersion = 77;
@@ -185,15 +212,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20F020D7AA59094775A9D9BF /* AppState.swift in Sources */,
 				2A50AD4D7F6E1A4666FCDFB0 /* BoardingPINView.swift in Sources */,
 				E5357FCA86438C63547E134E /* CarpoolModels.swift in Sources */,
 				1552B478813B81ED1DC1CD47 /* CarpschoolApp.swift in Sources */,
 				F151227B5E2C183B5D404DC1 /* ContentView.swift in Sources */,
 				E9871C213352F7ABF480FB96 /* CorridorMatchingView.swift in Sources */,
 				E5BF0CD696A6B40EDC54F06F /* HomesView.swift in Sources */,
+				78C6040A06D0771AD1FCFB55 /* LocationSearchService.swift in Sources */,
 				51F4D1C5758D5B414017519B /* LocationSnapshotService.swift in Sources */,
 				85ADFB658940CFF65185E68D /* NegotiationChatView.swift in Sources */,
+				210B7FEE2E2B161AF7A04853 /* NegotiationListView.swift in Sources */,
 				F7742402CAA23DF2C57EEE3D /* NetworkService.swift in Sources */,
+				A6081A5FE88A94F34DD9D6D1 /* OnboardingView.swift in Sources */,
+				E37168A078765AFA10B9DD50 /* ProfileView.swift in Sources */,
+				941682158365CC2F5146D775 /* RiderApplicationsView.swift in Sources */,
 				5B89F44E58675CEAE617C342 /* SchoolSelectView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -271,6 +304,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Carpschool/Carpschool.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_KEY_CFBundleDisplayName = Carpschool;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Carpschool uses your location only for discrete boarding and arrival verification snapshots.";
@@ -288,6 +322,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Carpschool/Carpschool.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_KEY_CFBundleDisplayName = Carpschool;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Carpschool uses your location only for discrete boarding and arrival verification snapshots.";
@@ -384,6 +419,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		51A5B06A7777D8B6E6A9EDD1 /* XCRemoteSwiftPackageReference "clerk-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/clerk/clerk-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.0;
+			};
+		};
 		67DEB45D7103E67AAB8100C7 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/socketio/socket.io-client-swift";
@@ -395,10 +438,20 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		45B0249BF68A60F0E4CBA3CD /* ClerkKitUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 51A5B06A7777D8B6E6A9EDD1 /* XCRemoteSwiftPackageReference "clerk-ios" */;
+			productName = ClerkKitUI;
+		};
 		4D85C76A71C0BC476C6E82BA /* SocketIO */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 67DEB45D7103E67AAB8100C7 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */;
 			productName = SocketIO;
+		};
+		7693DA1674A4BD198AC0E723 /* ClerkKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 51A5B06A7777D8B6E6A9EDD1 /* XCRemoteSwiftPackageReference "clerk-ios" */;
+			productName = ClerkKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -13,6 +13,9 @@ packages:
   SocketIO:
     url: https://github.com/socketio/socket.io-client-swift
     from: 16.1.0
+  Clerk:
+    url: https://github.com/clerk/clerk-ios
+    from: 1.5.0
 
 targets:
   Carpschool:
@@ -24,7 +27,12 @@ targets:
       PRODUCT_BUNDLE_IDENTIFIER: ca.carpschool.ios
       INFOPLIST_KEY_CFBundleDisplayName: "Carpschool"
       INFOPLIST_KEY_NSLocationWhenInUseUsageDescription: "Carpschool uses your location only for discrete boarding and arrival verification snapshots."
+      CODE_SIGN_ENTITLEMENTS: Carpschool/Carpschool.entitlements
     dependencies:
       - sdk: MapKit.framework
       - sdk: CoreLocation.framework
       - package: SocketIO
+      - package: Clerk
+        product: ClerkKit
+      - package: Clerk
+        product: ClerkKitUI

@@ -29,6 +29,15 @@ class LocationSnapshotService: NSObject, CLLocationManagerDelegate {
      * Captures a single discrete GPS coordinate read and immediately stops location updates.
      */
     func captureDiscreteSnapshot() async throws -> CLLocationCoordinate2D {
+        #if targetEnvironment(simulator)
+        // In simulator environments, return realistic campus coordinate if location is simulated or unavailable
+        if manager.authorizationStatus == .denied || manager.authorizationStatus == .restricted {
+            return CLLocationCoordinate2D(latitude: 49.2606, longitude: -123.2460)
+        }
+        #endif
+        
+        requestAuthorization()
+        
         return try await withCheckedThrowingContinuation { cont in
             self.continuation = cont
             self.manager.requestLocation()
@@ -43,7 +52,13 @@ class LocationSnapshotService: NSObject, CLLocationManagerDelegate {
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        #if targetEnvironment(simulator)
+        // Graceful fallback for simulator when no GPS hardware is simulated
+        continuation?.resume(returning: CLLocationCoordinate2D(latitude: 49.2606, longitude: -123.2460))
+        continuation = nil
+        #else
         continuation?.resume(throwing: error)
         continuation = nil
+        #endif
     }
 }

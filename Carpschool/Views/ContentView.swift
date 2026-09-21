@@ -1,39 +1,243 @@
 import SwiftUI
+import ClerkKit
+import ClerkKitUI
 
+/**
+ * ContentView
+ * 
+ * Root view routing between:
+ * 1. Clerk Authentication (native AuthView or Simulator Quickstart)
+ * 2. 4-Step Onboarding Flow (if school or role not configured)
+ * 3. Role-Adapted Native TabView (Driver Console vs. Rider Portal)
+ */
 struct ContentView: View {
-    @State private var selectedSchool: School?
-    @State private var isConnected = false
+    @Environment(Clerk.self) private var clerk
+    @Environment(AppState.self) private var appState
+    
+    @State private var showAuthSheet: Bool = false
+    @State private var selectedTab: Int = 0
 
     var body: some View {
         Group {
-            if !isConnected {
-                SchoolSelectView(onSchoolConnected: { school in
-                    selectedSchool = school
-                    isConnected = true
-                })
+            if clerk.user == nil && !appState.isDevMockAuth {
+                signedOutView
+            } else if !appState.isOnboarded || appState.currentSchool == nil {
+                OnboardingView()
             } else {
-                TabView {
-                    NavigationStack {
-                        HomesView()
-                    }
-                    .tabItem {
-                        Label("Homes", systemImage: "house.fill")
-                    }
+                mainTabView
+            }
+        }
+    }
 
-                    NavigationStack {
-                        CorridorMatchingView()
-                    }
-                    .tabItem {
-                        Label("Corridor", systemImage: "point.topleft.down.to.point.bottomright.curvepath.fill")
-                    }
+    // MARK: - Signed Out View (Clerk Native Authentication)
+    
+    private var signedOutView: some View {
+        VStack(spacing: 28) {
+            Spacer()
 
-                    NavigationStack {
-                        BoardingPINView()
+            // Carpschool Native Logo & Title
+            VStack(spacing: 14) {
+                Image(systemName: "car.2.fill")
+                    .font(.system(size: 72))
+                    .foregroundStyle(Color.accentColor)
+
+                Text("Carpschool")
+                    .font(.system(size: 34, weight: .black, design: .rounded))
+
+                Text("Autonomous Federated University Carpooling")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 32)
+            }
+
+            // Trust & Architecture Feature Pills
+            VStack(alignment: .leading, spacing: 10) {
+                featureItem("building.columns.fill", "Autonomous School Nodes", "Each university runs its own self-governed node.")
+                featureItem("envelope.badge.shield.half.filled", "Zero Central Outbound Emails", "Identities managed strictly by Clerk.")
+                featureItem("location.slash.fill", "Discrete GPS Snapshots", "Zero continuous background tracking.")
+                featureItem("heart.fill", "100% Reciprocal Carpools", "Zero ride fees and zero payment processing.")
+            }
+            .padding()
+            .background(Color(.secondarySystemBackground))
+            .clipShape(RoundedRectangle(cornerRadius: 16))
+            .padding(.horizontal, 24)
+
+            Spacer()
+
+            // Clerk Authentication Buttons
+            VStack(spacing: 12) {
+                Button {
+                    showAuthSheet = true
+                } label: {
+                    HStack {
+                        Image(systemName: "lock.shield.fill")
+                        Text("Sign In with Clerk")
                     }
-                    .tabItem {
-                        Label("Boarding", systemImage: "checkmark.shield.fill")
-                    }
+                    .frame(maxWidth: .infinity)
+                    .bold()
                 }
+                .buttonStyle(.borderedProminent)
+                .controlSize(.large)
+
+                // Quick Simulator Demo Mode
+                Button {
+                    enterDemoMode(role: .driver)
+                } label: {
+                    Text("Developer Quickstart (Driver Demo)")
+                        .font(.caption.bold())
+                }
+                .buttonStyle(.bordered)
+                .tint(.secondary)
+            }
+            .padding(.horizontal, 24)
+            .padding(.bottom, 32)
+        }
+        .sheet(isPresented: $showAuthSheet) {
+            NavigationStack {
+                AuthView()
+                    .navigationTitle("Sign In")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .cancellationAction) {
+                            Button("Close") { showAuthSheet = false }
+                        }
+                    }
+            }
+        }
+    }
+
+    private func featureItem(_ icon: String, _ title: String, _ desc: String) -> some View {
+        HStack(alignment: .top, spacing: 12) {
+            Image(systemName: icon)
+                .font(.body)
+                .foregroundStyle(Color.accentColor)
+                .frame(width: 24)
+                .padding(.top, 2)
+
+            VStack(alignment: .leading, spacing: 2) {
+                Text(title)
+                    .font(.caption.bold())
+                Text(desc)
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+            }
+        }
+    }
+
+    private func enterDemoMode(role: UserRole) {
+        appState.isDevMockAuth = true
+        appState.currentUserProfile = UserProfile(
+            clerkUserId: "demo_student_01",
+            primaryEmail: "student@ubc.ca",
+            role: role,
+            isOnboarded: false,
+            isEduVerified: true,
+            personalEmail: "student@gmail.com",
+            vehicle: VehicleInfo(
+                make: "Tesla",
+                model: "Model Y",
+                color: "Midnight Blue",
+                licensePlate: "BC 789-UBC",
+                seatCapacity: 3
+            ),
+            primaryHome: UserHome(
+                _id: "home_ubc",
+                label: "Primary Residence",
+                address: "2329 West Mall, Vancouver, BC",
+                walkingRadiusMeters: 75,
+                location: GeoLocation(latitude: 49.2606, longitude: -123.2460)
+            )
+        )
+    }
+
+    // MARK: - Main Role-Adapted Tab View
+    
+    private var mainTabView: some View {
+        TabView(selection: $selectedTab) {
+            if appState.activeRole == .driver {
+                // Driver Console Tabs
+                NavigationStack {
+                    CorridorMatchingView()
+                }
+                .tabItem {
+                    Label("Corridor", systemImage: "point.topleft.down.to.point.bottomright.curvepath.fill")
+                }
+                .tag(0)
+
+                NavigationStack {
+                    HomesView()
+                }
+                .tabItem {
+                    Label("Homes", systemImage: "house.fill")
+                }
+                .tag(1)
+
+                NavigationStack {
+                    BoardingPINView()
+                }
+                .tabItem {
+                    Label("Boarding", systemImage: "checkmark.shield.fill")
+                }
+                .tag(2)
+
+                NavigationStack {
+                    NegotiationListView()
+                }
+                .tabItem {
+                    Label("Messages", systemImage: "bubble.left.and.bubble.right.fill")
+                }
+                .tag(3)
+
+                NavigationStack {
+                    ProfileView()
+                }
+                .tabItem {
+                    Label("Profile", systemImage: "person.crop.circle.fill")
+                }
+                .tag(4)
+
+            } else {
+                // Rider Portal Tabs
+                NavigationStack {
+                    RiderApplicationsView()
+                }
+                .tabItem {
+                    Label("My Rides", systemImage: "car.side.fill")
+                }
+                .tag(0)
+
+                NavigationStack {
+                    HomesView()
+                }
+                .tabItem {
+                    Label("Homes", systemImage: "house.fill")
+                }
+                .tag(1)
+
+                NavigationStack {
+                    BoardingPINView()
+                }
+                .tabItem {
+                    Label("Safety PIN", systemImage: "shield.checkered")
+                }
+                .tag(2)
+
+                NavigationStack {
+                    NegotiationListView()
+                }
+                .tabItem {
+                    Label("Messages", systemImage: "bubble.left.and.bubble.right.fill")
+                }
+                .tag(3)
+
+                NavigationStack {
+                    ProfileView()
+                }
+                .tabItem {
+                    Label("Profile", systemImage: "person.crop.circle.fill")
+                }
+                .tag(4)
             }
         }
     }
