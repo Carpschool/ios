@@ -1,4 +1,5 @@
 import Foundation
+import ClerkKit
 
 /**
  * NetworkService
@@ -43,7 +44,13 @@ class NetworkService {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        if let token = clerkToken {
+        
+        var token = clerkToken
+        if token == nil {
+            let session = await MainActor.run { Clerk.shared.session }
+            token = try? await session?.getToken()
+        }
+        if let token = token {
             request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         }
         

@@ -3,45 +3,12 @@ import MapKit
 import Observation
 
 /**
- * LocationSearchCompletion
- * 
- * Represents a single search prediction from Apple MapKit MKLocalSearchCompleter.
- */
-struct LocationSearchCompletion: Identifiable, Hashable {
-    var id: String { "\(title)-\(subtitle)" }
-    let title: String
-    let subtitle: String
-    let completion: MKLocalSearchCompletion
-}
-
-/**
- * LocationSearchResult
- * 
- * Resolved location with verified coordinates and formatted title.
- */
-struct LocationSearchResult: Identifiable, Hashable {
-    var id: String { "\(coordinate.latitude)-\(coordinate.longitude)" }
-    let title: String
-    let subtitle: String
-    let coordinate: CLLocationCoordinate2D
-    let mapItem: MKMapItem
-
-    static func == (lhs: LocationSearchResult, rhs: LocationSearchResult) -> Bool {
-        lhs.id == rhs.id && lhs.title == rhs.title
-    }
-
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-        hasher.combine(title)
-    }
-}
-
-/**
  * LocationSearchService
  * 
  * Native Apple MapKit local search & autocomplete service.
  * Leverages MKLocalSearchCompleter for fast, zero-cost, on-device address search.
  */
+@MainActor
 @Observable
 class LocationSearchService: NSObject, MKLocalSearchCompleterDelegate {
     var query: String = "" {
@@ -64,15 +31,20 @@ class LocationSearchService: NSObject, MKLocalSearchCompleterDelegate {
     
     // MARK: - Completer Delegate
     
-    func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
-        self.completions = completer.results.map {
+    nonisolated func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
+        let results = completer.results.map {
             LocationSearchCompletion(title: $0.title, subtitle: $0.subtitle, completion: $0)
         }
-        self.isSearching = false
+        Task { @MainActor in
+            self.completions = results
+            self.isSearching = false
+        }
     }
     
-    func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
-        self.isSearching = false
+    nonisolated func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
+        Task { @MainActor in
+            self.isSearching = false
+        }
     }
     
     // MARK: - Coordinate Resolution

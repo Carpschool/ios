@@ -52,7 +52,7 @@ struct CorridorMatchingView: View {
                 // Prospective Rider Applications
                 ForEach(applications) { app in
                     if let home = app.pickupHome {
-                        Marker("\(app.targetTime)", coordinate: home.coordinate)
+                        Marker(app.targetTime, coordinate: home.coordinate)
                             .tint(.purple)
                             .tag(app)
 
@@ -76,7 +76,7 @@ struct CorridorMatchingView: View {
                         ContentUnavailableView(
                             "No Matching Riders",
                             systemImage: "figure.walk.motion",
-                            description: Text("No student commute applications found along this corridor right now.")
+                            description: Text("No student commute requests found along this route right now.")
                         )
                     } else {
                         ForEach(applications) { app in
@@ -110,7 +110,7 @@ struct CorridorMatchingView: View {
                                 }
 
                                 HStack {
-                                    Label("\(app.walkingRadiusMeters)m walking radius", systemImage: "figure.walk")
+                                    Label("\(app.walkingRadiusMeters) m walking radius", systemImage: "figure.walk")
                                         .font(.caption2)
                                         .foregroundStyle(.purple)
 
@@ -150,12 +150,12 @@ struct CorridorMatchingView: View {
                     }
                 } header: {
                     HStack {
-                        Text("Prospective Passengers Along Route")
+                        Text("Riders on Your Route")
                         Spacer()
                         if isLoading { ProgressView() }
                     }
                 } footer: {
-                    Text("Reach out to suggest pickup locations within the rider's walking radius. Zero payments, pure reciprocal student carpools.")
+                    Text("Suggest pickup spots within the rider's walking radius. Reciprocal student carpools with zero fares.")
                 }
             }
             .listStyle(.insetGrouped)
@@ -222,7 +222,7 @@ struct CorridorMatchingView: View {
                     _id: "msg_1",
                     senderId: "driver_me",
                     senderName: "Me (Driver)",
-                    message: "Hi! I see your application for \(app.targetTime). I'm driving this route and have an empty seat.",
+                    message: "Hi! I see your commute request for \(app.targetTime). I'm driving this route and have an empty seat.",
                     timestamp: "Just now",
                     isSystem: false
                 )

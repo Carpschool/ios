@@ -16,9 +16,9 @@ struct NegotiationListView: View {
             Section {
                 if negotiations.isEmpty && !isLoading {
                     ContentUnavailableView(
-                        "No Active Negotiations",
+                        "No Conversations",
                         systemImage: "bubble.left.and.bubble.right",
-                        description: Text("When you reach out to a rider or driver, your conversations and pickup point proposals will appear here.")
+                        description: Text("When you connect with a rider or driver, your conversations and pickup proposals will appear here.")
                     )
                 } else {
                     ForEach(negotiations) { neg in
@@ -60,12 +60,12 @@ struct NegotiationListView: View {
                 }
             } header: {
                 HStack {
-                    Text("Conversations & Proposals")
+                    Text("Active Conversations")
                     Spacer()
                     if isLoading { ProgressView() }
                 }
             } footer: {
-                Text("All negotiations adhere to Carpschool's zero-payment and verified student safety rules.")
+                Text("All negotiations adhere to Carpschool reciprocal zero-fare student policies.")
             }
         }
         .listStyle(.insetGrouped)
@@ -77,7 +77,6 @@ struct NegotiationListView: View {
 
     private func loadNegotiations() async {
         isLoading = true
-        // Seed sample active negotiation
         negotiations = [
             Negotiation(
                 _id: "neg_active_1",
@@ -102,7 +101,7 @@ struct NegotiationListView: View {
                         _id: "msg_init",
                         senderId: "driver_alex",
                         senderName: "Alex W. (Driver)",
-                        message: "Hi! I see your application for Broadway & Alma. I can pick you up near the bus loop.",
+                        message: "Hi! I see your commute request for Broadway & Alma. I can pick you up near the bus loop.",
                         timestamp: "Today 7:45 AM",
                         isSystem: false
                     )

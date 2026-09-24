@@ -27,6 +27,7 @@ struct ContentView: View {
                 mainTabView
             }
         }
+        .prefetchClerkImages()
     }
 
     // MARK: - Signed Out View (Clerk Native Authentication)
@@ -44,19 +45,35 @@ struct ContentView: View {
                 Text("Carpschool")
                     .font(.system(size: 34, weight: .black, design: .rounded))
 
-                Text("Autonomous Federated University Carpooling")
+                Text("Autonomous Federated Campus Carpooling")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 32)
             }
 
-            // Trust & Architecture Feature Pills
-            VStack(alignment: .leading, spacing: 10) {
-                featureItem("building.columns.fill", "Autonomous School Nodes", "Each university runs its own self-governed node.")
-                featureItem("envelope.badge.shield.half.filled", "Zero Central Outbound Emails", "Identities managed strictly by Clerk.")
-                featureItem("location.slash.fill", "Discrete GPS Snapshots", "Zero continuous background tracking.")
-                featureItem("heart.fill", "100% Reciprocal Carpools", "Zero ride fees and zero payment processing.")
+            // Trust & Architecture Feature List
+            VStack(alignment: .leading, spacing: 12) {
+                featureItem(
+                    "building.columns.fill",
+                    "Autonomous Campus Nodes",
+                    "Universities run independent, self-governed servers."
+                )
+                featureItem(
+                    "envelope.badge.shield.half.filled",
+                    "Zero Central Emails",
+                    "Accounts and authentication are managed strictly by Clerk."
+                )
+                featureItem(
+                    "location.slash.fill",
+                    "Discrete Location",
+                    "Single GPS snapshot at boarding and arrival. No background tracking."
+                )
+                featureItem(
+                    "heart.fill",
+                    "Reciprocal Carpools",
+                    "Shared student rides with zero fares and zero payments."
+                )
             }
             .padding()
             .background(Color(.secondarySystemBackground))
@@ -81,14 +98,27 @@ struct ContentView: View {
                 .controlSize(.large)
 
                 // Quick Simulator Demo Mode
-                Button {
-                    enterDemoMode(role: .driver)
-                } label: {
-                    Text("Developer Quickstart (Driver Demo)")
-                        .font(.caption.bold())
+                HStack(spacing: 12) {
+                    Button {
+                        enterDemoMode(role: .driver)
+                    } label: {
+                        Text("Demo as Driver")
+                            .font(.caption.bold())
+                            .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(.bordered)
+                    .tint(.secondary)
+
+                    Button {
+                        enterDemoMode(role: .rider)
+                    } label: {
+                        Text("Demo as Rider")
+                            .font(.caption.bold())
+                            .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(.bordered)
+                    .tint(.secondary)
                 }
-                .buttonStyle(.bordered)
-                .tint(.secondary)
             }
             .padding(.horizontal, 24)
             .padding(.bottom, 32)
@@ -143,7 +173,7 @@ struct ContentView: View {
             ),
             primaryHome: UserHome(
                 _id: "home_ubc",
-                label: "Primary Residence",
+                label: "Campus Residence",
                 address: "2329 West Mall, Vancouver, BC",
                 walkingRadiusMeters: 75,
                 location: GeoLocation(latitude: 49.2606, longitude: -123.2460)
@@ -219,7 +249,7 @@ struct ContentView: View {
                     BoardingPINView()
                 }
                 .tabItem {
-                    Label("Safety PIN", systemImage: "shield.checkered")
+                    Label("Boarding PIN", systemImage: "shield.checkered")
                 }
                 .tag(2)
 

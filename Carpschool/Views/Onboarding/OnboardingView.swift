@@ -6,9 +6,9 @@ import ClerkKit
  * OnboardingView
  * 
  * 4-Step native onboarding flow matching Carpschool's federated architecture:
- * 1. Select School (Directory + Other School button allowing untrusted servers)
+ * 1. Select Campus (Directory + Other Campus button allowing untrusted servers)
  * 2. Choose Role (Student Rider vs. Student Driver)
- * 3. School Email Verification (Configurable per school server policy)
+ * 3. Campus Email Verification (Configurable per school server policy)
  * 4. Complete Profile (Driver License Plate & Vehicle + Apple Maps Residence & 10m-200m Walking Radius)
  */
 struct OnboardingView: View {
@@ -35,7 +35,6 @@ struct OnboardingView: View {
     @State private var otpCode: String = ""
     @State private var isOtpSent: Bool = false
     @State private var isEduVerified: Bool = false
-    @State private var verificationMessage: String = ""
     @State private var isVerifying: Bool = false
     
     // Step 4: Profile & Location
@@ -105,10 +104,10 @@ struct OnboardingView: View {
     
     private var stepTitle: String {
         switch currentStep {
-        case 1: return "1. Select University"
-        case 2: return "2. Choose Role"
-        case 3: return "3. Institutional Email"
-        case 4: return "4. Complete Profile"
+        case 1: return "Select Campus"
+        case 2: return "Choose Role"
+        case 3: return "Campus Email"
+        case 4: return "Complete Profile"
         default: return "Onboarding"
         }
     }
@@ -191,7 +190,7 @@ struct OnboardingView: View {
             } header: {
                 Text("Verified Campuses")
             } footer: {
-                Text("Select your primary college or university campus to connect to its autonomous federation node.")
+                Text("Select your university or college campus to connect to its autonomous federation node.")
             }
             
             Section {
@@ -201,7 +200,7 @@ struct OnboardingView: View {
                     HStack {
                         Image(systemName: "network")
                             .foregroundStyle(.orange)
-                        Text("Other School (Self-Hosted / Custom Server)")
+                        Text("Other Campus (Self-Hosted Node)")
                             .foregroundStyle(.primary)
                         Spacer()
                         Image(systemName: "exclamationmark.triangle")
@@ -213,7 +212,7 @@ struct OnboardingView: View {
                 Text("Use this if your campus hosts an independent Carpschool node not in the central directory.")
             }
         }
-        .searchable(text: $schoolSearchText, prompt: "Search universities...")
+        .searchable(text: $schoolSearchText, prompt: "Search campuses")
         .sheet(isPresented: $showOtherSchoolSheet) {
             otherSchoolSheet
         }
@@ -223,11 +222,11 @@ struct OnboardingView: View {
         NavigationStack {
             Form {
                 Section {
-                    Label("Untrusted / Self-Hosted Server", systemImage: "exclamationmark.triangle.fill")
+                    Label("Untrusted Campus Server", systemImage: "exclamationmark.triangle.fill")
                         .font(.headline)
                         .foregroundStyle(.orange)
                     
-                    Text("Self-hosted school servers operate autonomously. They have not been audited or verified by Carpschool administrators. Proceed only if you trust the host organization.")
+                    Text("Self-hosted school servers operate autonomously and are not verified by Carpschool administrators. Only connect if you trust the host organization.")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
@@ -241,20 +240,20 @@ struct OnboardingView: View {
                 }
                 
                 Section {
-                    Button("Connect to Custom Server") {
+                    Button("Connect to Server") {
                         showUntrustedAlert = true
                     }
                     .disabled(customSchoolUrl.trimmingCharacters(in: .whitespaces).isEmpty)
                 }
             }
-            .navigationTitle("Custom School Server")
+            .navigationTitle("Custom Campus Server")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") { showOtherSchoolSheet = false }
                 }
             }
-            .alert("Proceed with Untrusted Server?", isPresented: $showUntrustedAlert) {
+            .alert("Connect to Untrusted Server?", isPresented: $showUntrustedAlert) {
                 Button("Cancel", role: .cancel) {}
                 Button("Connect", role: .destructive) {
                     showOtherSchoolSheet = false
@@ -295,7 +294,7 @@ struct OnboardingView: View {
     
     private var roleSelectionStep: some View {
         VStack(spacing: 20) {
-            Text("How will you participate in Carpschool?")
+            Text("Choose how you'll participate in Carpschool.")
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
                 .padding(.top, 16)
@@ -305,20 +304,30 @@ struct OnboardingView: View {
                 roleCard(
                     role: .rider,
                     title: "Student Rider",
-                    subtitle: "Looking for reliable campus rides",
+                    subtitle: "Looking for rides to campus",
                     icon: "person.crop.circle.badge.plus",
                     color: .blue,
-                    details: ["Browse driver commute corridors", "Propose flexible pickup spots within walking radius", "Single discrete GPS arrival snapshots", "Reciprocal student community — Zero ride fares"]
+                    details: [
+                        "Browse driver corridors along your route",
+                        "Propose pickup spots within your walking radius",
+                        "Single discrete GPS arrival snapshots",
+                        "Reciprocal student carpools with zero fares"
+                    ]
                 )
                 
                 // Driver Card
                 roleCard(
                     role: .driver,
                     title: "Student Driver",
-                    subtitle: "Driving my own car to campus",
+                    subtitle: "Driving to campus with available seats",
                     icon: "car.fill",
                     color: .indigo,
-                    details: ["Share empty seats along your daily route", "Review student passenger requests", "Enter passenger 4-digit Boarding PIN", "Requires vehicle details & license plate number"]
+                    details: [
+                        "Share empty seats along your daily route",
+                        "Review student commute requests",
+                        "Verify boarding with passenger 4-digit PIN",
+                        "Requires vehicle details and license plate"
+                    ]
                 )
             }
             .padding(.horizontal)
@@ -331,7 +340,7 @@ struct OnboardingView: View {
                 }
             } label: {
                 HStack {
-                    Text("Continue with \(selectedRole.title)")
+                    Text("Continue as \(selectedRole.title)")
                     Image(systemName: "arrow.right")
                 }
                 .frame(maxWidth: .infinity)
@@ -417,7 +426,7 @@ struct OnboardingView: View {
                         .font(.headline)
                         .foregroundStyle(Color.accentColor)
                     
-                    Text("\(selectedSchool?.officialName ?? "This campus") requires all \(selectedRole.title)s to verify an active institutional email address.")
+                    Text("\(selectedSchool?.officialName ?? "This campus") requires all \(selectedRole.title)s to verify an active institutional email.")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
@@ -460,8 +469,8 @@ struct OnboardingView: View {
                         HStack {
                             Image(systemName: "checkmark.seal.fill")
                                 .foregroundStyle(.green)
-                            Text("Email verified successfully!")
-                                .font(.subheadline)
+                            Text("Email verified")
+                                .font(.subheadline.bold())
                                 .foregroundStyle(.green)
                         }
                     }
@@ -477,7 +486,7 @@ struct OnboardingView: View {
                             VStack(alignment: .leading, spacing: 2) {
                                 Text("Email Verification Not Required")
                                     .font(.headline)
-                                Text("\(selectedSchool?.officialName ?? "This institution") does not require institutional email verification for \(selectedRole.title)s.")
+                                Text("\(selectedSchool?.officialName ?? "This campus") does not require institutional email verification for \(selectedRole.title)s.")
                                     .font(.caption)
                                     .foregroundStyle(.secondary)
                             }
@@ -494,7 +503,7 @@ struct OnboardingView: View {
                     }
                 } label: {
                     HStack {
-                        Text("Proceed to Profile Setup")
+                        Text("Continue to Profile")
                         Spacer()
                         Image(systemName: "arrow.right")
                     }
@@ -531,10 +540,10 @@ struct OnboardingView: View {
         Form {
             // Driver Vehicle Details (Mandatory license plate)
             if selectedRole == .driver {
-                Section("Driver Vehicle Information") {
-                    TextField("Vehicle Make (e.g. Toyota, Tesla)", text: $vehicleMake)
-                    TextField("Vehicle Model (e.g. Corolla, Model 3)", text: $vehicleModel)
-                    TextField("Vehicle Color (e.g. Midnight Blue)", text: $vehicleColor)
+                Section("Driver Vehicle") {
+                    TextField("Vehicle Make (e.g. Honda, Tesla)", text: $vehicleMake)
+                    TextField("Vehicle Model (e.g. Civic, Model 3)", text: $vehicleModel)
+                    TextField("Vehicle Color (e.g. Silver)", text: $vehicleColor)
                     
                     HStack {
                         Text("Available Seats")
@@ -548,12 +557,12 @@ struct OnboardingView: View {
                     }
                     
                     VStack(alignment: .leading, spacing: 4) {
-                        TextField("Car License Plate Number (Mandatory)", text: $licensePlate)
+                        TextField("License Plate Number", text: $licensePlate)
                             .fontDesign(.monospaced)
                             .textInputAutocapitalization(.characters)
                             .autocorrectionDisabled()
                         
-                        Text("Required for passenger safety & vehicle boarding confirmation.")
+                        Text("Passengers check your license plate before entering the car.")
                             .font(.caption2)
                             .foregroundStyle(.secondary)
                     }
@@ -568,12 +577,12 @@ struct OnboardingView: View {
             }
             
             // Primary Residence with Apple Maps Search
-            Section("Primary Residence (Pickup / Drop-off)") {
+            Section("Primary Residence") {
                 VStack(alignment: .leading, spacing: 8) {
                     HStack {
                         Image(systemName: "magnifyingglass")
                             .foregroundStyle(.secondary)
-                        TextField("Search address or neighbourhood...", text: $searchService.query)
+                        TextField("Search street or address", text: $searchService.query)
                             .autocorrectionDisabled()
                     }
                     
@@ -618,15 +627,15 @@ struct OnboardingView: View {
                             HStack {
                                 Text("Walking Radius")
                                 Spacer()
-                                Text("\(Int(walkingRadius)) meters")
+                                Text("\(Int(walkingRadius)) m")
                                     .bold()
                                     .foregroundStyle(Color.accentColor)
                             }
                             Slider(value: $walkingRadius, in: 10...200, step: 5)
                             HStack {
-                                Text("10m (doorstep)").font(.caption2).foregroundStyle(.secondary)
+                                Text("10 m (doorstep)").font(.caption2).foregroundStyle(.secondary)
                                 Spacer()
-                                Text("200m (short walk)").font(.caption2).foregroundStyle(.secondary)
+                                Text("200 m (short walk)").font(.caption2).foregroundStyle(.secondary)
                             }
                         }
                         .padding(.top, 4)
@@ -644,7 +653,7 @@ struct OnboardingView: View {
                             ProgressView()
                                 .padding(.trailing, 4)
                         }
-                        Text("Complete Onboarding & Start Carpooling")
+                        Text("Complete Onboarding")
                             .bold()
                         Spacer()
                     }

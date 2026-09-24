@@ -5,7 +5,7 @@ import CoreLocation
  * BoardingPINView
  * 
  * Role-Adapted Boarding Verification & Discrete GPS Snapshotting:
- * - Riders: Displays 4-digit Boarding Safety PIN in monospaced security badge.
+ * - Riders: Displays 4-digit Boarding PIN in monospaced security badge.
  * - Drivers: Keypad/Input to enter passenger's PIN, capturing a single discrete GPS snapshot.
  * - Zero continuous GPS tracking. Zero payment transactions.
  */
@@ -38,7 +38,7 @@ struct BoardingPINView: View {
             }
             .padding()
         }
-        .navigationTitle("Boarding Verification")
+        .navigationTitle("Boarding")
     }
 
     // MARK: - Driver View
@@ -53,7 +53,7 @@ struct BoardingPINView: View {
                 Text("Passenger Boarding")
                     .font(.title2.bold())
 
-                Text("Enter the passenger's 4-digit Safety PIN when they enter your vehicle. A single discrete GPS coordinate snapshot will be captured to log the pickup location.")
+                Text("Enter the passenger's 4-digit Boarding PIN when they enter your vehicle. A single discrete GPS snapshot records the pickup spot.")
                     .font(.caption)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
@@ -79,7 +79,7 @@ struct BoardingPINView: View {
                     HStack {
                         if isCapturingLocation { ProgressView().padding(.trailing, 4) }
                         Image(systemName: "person.crop.circle.badge.checkmark")
-                        Text("Verify & Board Passenger")
+                        Text("Verify and Board Passenger")
                     }
                     .frame(maxWidth: 260)
                     .bold()
@@ -94,11 +94,11 @@ struct BoardingPINView: View {
                     HStack {
                         Image(systemName: "checkmark.circle.fill")
                             .foregroundStyle(.green)
-                        Text("Passenger Successfully Boarded")
+                        Text("Passenger Boarded")
                             .font(.subheadline.bold())
                             .foregroundStyle(.green)
                     }
-                    Text("Discrete GPS Snapshot: [\(String(format: "%.5f", coord.latitude)), \(String(format: "%.5f", coord.longitude))]")
+                    Text("Discrete GPS snapshot: [\(String(format: "%.5f", coord.latitude)), \(String(format: "%.5f", coord.longitude))]")
                         .font(.caption2.monospaced())
                         .foregroundStyle(.secondary)
                 }
@@ -115,7 +115,7 @@ struct BoardingPINView: View {
                 Text("Arrival at Campus")
                     .font(.headline)
 
-                Text("When you arrive at the campus drop-off loop, tap below to log the discrete arrival snapshot and conclude the carpool.")
+                Text("When you reach campus, record the arrival snapshot to complete the carpool.")
                     .font(.caption)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
@@ -125,7 +125,7 @@ struct BoardingPINView: View {
                 } label: {
                     HStack {
                         Image(systemName: "flag.checkered")
-                        Text(isRideCompleted ? "Ride Concluded" : "End Ride (Arrival Snapshot)")
+                        Text(isRideCompleted ? "Ride Completed" : "Complete Ride (Arrival Snapshot)")
                     }
                     .frame(maxWidth: 260)
                 }
@@ -138,7 +138,7 @@ struct BoardingPINView: View {
                     HStack {
                         Image(systemName: "checkmark.seal.fill")
                             .foregroundStyle(.orange)
-                        Text("Arrival logged at [\(String(format: "%.5f", coord.latitude)), \(String(format: "%.5f", coord.longitude))]")
+                        Text("Arrival recorded at [\(String(format: "%.5f", coord.latitude)), \(String(format: "%.5f", coord.longitude))]")
                             .font(.caption2.monospaced())
                             .foregroundStyle(.orange)
                     }
@@ -156,10 +156,10 @@ struct BoardingPINView: View {
                     .font(.system(size: 48))
                     .foregroundStyle(.green)
 
-                Text("Your Boarding Safety PIN")
+                Text("Your Boarding PIN")
                     .font(.title2.bold())
 
-                Text("Provide this code to your verified driver upon entering the vehicle. Do not share this code before seeing your driver's car and license plate.")
+                Text("Share this 4-digit PIN with your driver when entering the vehicle. Do not share it until you verify the car model and license plate.")
                     .font(.caption)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
@@ -168,7 +168,7 @@ struct BoardingPINView: View {
 
             // PIN Security Badge
             VStack(spacing: 8) {
-                Text("BOARDING SAFETY PIN")
+                Text("BOARDING PIN")
                     .font(.caption2.bold())
                     .foregroundStyle(.secondary)
                     .tracking(2)
@@ -193,12 +193,12 @@ struct BoardingPINView: View {
 
             // Vehicle & Driver Confirmation Checklist
             VStack(alignment: .leading, spacing: 10) {
-                Text("Boarding Safety Checklist")
+                Text("Boarding Checklist")
                     .font(.headline)
 
-                safetyCheckItem("Verify car make, model, and color before entering")
+                safetyCheckItem("Confirm vehicle make, model, and color")
                 safetyCheckItem("Check that the license plate matches your matched driver")
-                safetyCheckItem("Say hello and confirm your driver's first name")
+                safetyCheckItem("Confirm driver name")
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding()
@@ -224,10 +224,10 @@ struct BoardingPINView: View {
             HStack {
                 Image(systemName: "location.slash.fill")
                     .foregroundStyle(Color.accentColor)
-                Text("Discrete Privacy Guarantee")
+                Text("Discrete Location Guarantee")
                     .font(.caption.bold())
             }
-            Text("Carpschool captures location ONLY at the exact moment of boarding and campus arrival. Continuous GPS tracking is never executed.")
+            Text("Carpschool records location only at the moment of boarding and campus arrival. Continuous background GPS is never used.")
                 .font(.caption2)
                 .foregroundStyle(.secondary)
         }
@@ -254,7 +254,7 @@ struct BoardingPINView: View {
                 )
                 self.isBoarded = true
             } catch {
-                self.statusMessage = "GPS capture error: \(error.localizedDescription)"
+                self.statusMessage = "Could not record location: \(error.localizedDescription)"
             }
             self.isCapturingLocation = false
         }
@@ -273,7 +273,7 @@ struct BoardingPINView: View {
                 )
                 self.isRideCompleted = true
             } catch {
-                self.statusMessage = "GPS capture error: \(error.localizedDescription)"
+                self.statusMessage = "Could not record location: \(error.localizedDescription)"
             }
             self.isCapturingLocation = false
         }
