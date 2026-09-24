@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 63;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -56,7 +56,7 @@
 		840A15D37D6C3B6DAFEA70C3 /* Carpschool.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Carpschool.entitlements; sourceTree = "<group>"; };
 		8632D2662E3413DA9D3D7281 /* Commute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commute.swift; sourceTree = "<group>"; };
 		885641265BE2BF7F7ED854E8 /* AddHomeSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHomeSheet.swift; sourceTree = "<group>"; };
-		8CA921DC6FB160C0DCB8602E /* Carpschool.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Carpschool.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CA921DC6FB160C0DCB8602E /* Carpschool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Carpschool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DBD33D6C2DD5F8AC73B4652 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		A11F2A1DE8801B76B1EAA925 /* LocationSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchService.swift; sourceTree = "<group>"; };
 		ACC5B9A13A47E0707E0D832F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -276,9 +276,8 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				51A5B06A7777D8B6E6A9EDD1 /* XCRemoteSwiftPackageReference "clerk-ios" */,
-				67DEB45D7103E67AAB8100C7 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */,
+				67DEB45D7103E67AAB8100C7 /* XCRemoteSwiftPackageReference "socket" */,
 			);
-			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -394,6 +393,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Carpschool/Carpschool.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 3MHFXTP4Q2;
 				INFOPLIST_KEY_CFBundleDisplayName = Carpschool;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Carpschool uses your location only for discrete boarding and arrival verification snapshots.";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -412,6 +412,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Carpschool/Carpschool.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 3MHFXTP4Q2;
 				INFOPLIST_KEY_CFBundleDisplayName = Carpschool;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Carpschool uses your location only for discrete boarding and arrival verification snapshots.";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -515,7 +516,7 @@
 				minimumVersion = 1.5.0;
 			};
 		};
-		67DEB45D7103E67AAB8100C7 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */ = {
+		67DEB45D7103E67AAB8100C7 /* XCRemoteSwiftPackageReference "socket" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/socketio/socket.io-client-swift";
 			requirement = {
@@ -533,7 +534,7 @@
 		};
 		4D85C76A71C0BC476C6E82BA /* SocketIO */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 67DEB45D7103E67AAB8100C7 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */;
+			package = 67DEB45D7103E67AAB8100C7 /* XCRemoteSwiftPackageReference "socket" */;
 			productName = SocketIO;
 		};
 		7693DA1674A4BD198AC0E723 /* ClerkKit */ = {
