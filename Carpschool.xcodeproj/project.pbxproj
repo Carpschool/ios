@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 63;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,7 @@
 		072393F2AFC006C27DECD24F /* BoardingPINView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47598CD9187F5D996A8C023A /* BoardingPINView.swift */; };
 		0F69D7A7ADB6E3B47E4C02DE /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBD33D6C2DD5F8AC73B4652 /* OnboardingView.swift */; };
 		1552B478813B81ED1DC1CD47 /* CarpschoolApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031647165056EF8B096EE51E /* CarpschoolApp.swift */; };
+		208658641FACFA9EE559DF7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD6ADB64238A076C3ABD7623 /* LaunchScreen.storyboard */; };
 		20F020D7AA59094775A9D9BF /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD007D5D09F855AA3EEE919 /* AppState.swift */; };
 		23EB9C3282FA837CBDDE9070 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0BEFB4F8AB733152818AD /* ProfileView.swift */; };
 		3DD3FDDC9C61C0C4BC906567 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E296E6B397EE8208AA55896 /* CoreLocation.framework */; };
@@ -56,7 +57,7 @@
 		840A15D37D6C3B6DAFEA70C3 /* Carpschool.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Carpschool.entitlements; sourceTree = "<group>"; };
 		8632D2662E3413DA9D3D7281 /* Commute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commute.swift; sourceTree = "<group>"; };
 		885641265BE2BF7F7ED854E8 /* AddHomeSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHomeSheet.swift; sourceTree = "<group>"; };
-		8CA921DC6FB160C0DCB8602E /* Carpschool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Carpschool.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CA921DC6FB160C0DCB8602E /* Carpschool.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Carpschool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DBD33D6C2DD5F8AC73B4652 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		A11F2A1DE8801B76B1EAA925 /* LocationSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchService.swift; sourceTree = "<group>"; };
 		ACC5B9A13A47E0707E0D832F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -66,6 +67,7 @@
 		E277681C80F9FE9857A97A9C /* HomesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomesView.swift; sourceTree = "<group>"; };
 		F85F351B958D7B87EA0D90E6 /* Negotiation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Negotiation.swift; sourceTree = "<group>"; };
 		FA10DBFC4171B56569181B9A /* RiderApplicationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiderApplicationsView.swift; sourceTree = "<group>"; };
+		FD6ADB64238A076C3ABD7623 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF46C24BD82E5F1F1FF1AE0D /* School.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = School.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -223,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				840A15D37D6C3B6DAFEA70C3 /* Carpschool.entitlements */,
+				FD6ADB64238A076C3ABD7623 /* LaunchScreen.storyboard */,
 				AB53AE0A5CE5863ECCDA06D8 /* App */,
 				8013D0600FB4EDD0B3EAAF27 /* Models */,
 				0B7C5F9A7CF9EEBF834AE440 /* Services */,
@@ -239,6 +242,7 @@
 			buildConfigurationList = 05873144ABE38AD5697AA354 /* Build configuration list for PBXNativeTarget "Carpschool" */;
 			buildPhases = (
 				0B6CCB8911F45C842C5D91FF /* Sources */,
+				B13040766BB206BAB9C6FC7E /* Resources */,
 				D798D78A30577F97F02316E4 /* Frameworks */,
 			);
 			buildRules = (
@@ -276,8 +280,9 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				51A5B06A7777D8B6E6A9EDD1 /* XCRemoteSwiftPackageReference "clerk-ios" */,
-				67DEB45D7103E67AAB8100C7 /* XCRemoteSwiftPackageReference "socket" */,
+				67DEB45D7103E67AAB8100C7 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */,
 			);
+			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -285,6 +290,17 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B13040766BB206BAB9C6FC7E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				208658641FACFA9EE559DF7E /* LaunchScreen.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0B6CCB8911F45C842C5D91FF /* Sources */ = {
@@ -393,9 +409,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Carpschool/Carpschool.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = 3MHFXTP4Q2;
 				INFOPLIST_KEY_CFBundleDisplayName = Carpschool;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Carpschool uses your location only for discrete boarding and arrival verification snapshots.";
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -412,9 +430,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Carpschool/Carpschool.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = 3MHFXTP4Q2;
 				INFOPLIST_KEY_CFBundleDisplayName = Carpschool;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Carpschool uses your location only for discrete boarding and arrival verification snapshots.";
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -516,7 +536,7 @@
 				minimumVersion = 1.5.0;
 			};
 		};
-		67DEB45D7103E67AAB8100C7 /* XCRemoteSwiftPackageReference "socket" */ = {
+		67DEB45D7103E67AAB8100C7 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/socketio/socket.io-client-swift";
 			requirement = {
@@ -534,7 +554,7 @@
 		};
 		4D85C76A71C0BC476C6E82BA /* SocketIO */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 67DEB45D7103E67AAB8100C7 /* XCRemoteSwiftPackageReference "socket" */;
+			package = 67DEB45D7103E67AAB8100C7 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */;
 			productName = SocketIO;
 		};
 		7693DA1674A4BD198AC0E723 /* ClerkKit */ = {

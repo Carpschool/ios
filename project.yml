@@ -27,6 +27,9 @@ targets:
       PRODUCT_BUNDLE_IDENTIFIER: ca.carpschool.ios
       INFOPLIST_KEY_CFBundleDisplayName: "Carpschool"
       INFOPLIST_KEY_NSLocationWhenInUseUsageDescription: "Carpschool uses your location only for discrete boarding and arrival verification snapshots."
+      INFOPLIST_KEY_UILaunchStoryboardName: "LaunchScreen"
+      INFOPLIST_KEY_UISupportedInterfaceOrientations: "UIInterfaceOrientationPortrait"
+      INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
       CODE_SIGN_ENTITLEMENTS: Carpschool/Carpschool.entitlements
     dependencies:
       - sdk: MapKit.framework
