@@ -33,127 +33,38 @@ struct ContentView: View {
     // MARK: - Signed Out View (Clerk Native Authentication)
     
     private var signedOutView: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            VStack(spacing: 24) {
-                // Carpschool Native Logo & Title
-                VStack(spacing: 12) {
-                    Image(systemName: "car.2.fill")
-                        .font(.system(size: 64))
-                        .foregroundStyle(Color.accentColor)
+        VStack(spacing: 16) {
+            Text("Carpschool")
+                .font(.largeTitle.bold())
 
-                    Text("Carpschool")
-                        .font(.system(size: 32, weight: .black, design: .rounded))
+            Text("Autonomous campus carpooling.")
+                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 32)
 
-                    Text("Autonomous Federated Campus Carpooling")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                        .multilineTextAlignment(.center)
-                        .padding(.horizontal, 24)
-                }
-                .padding(.top, 24)
-
-                // Trust & Architecture Feature List
-                VStack(alignment: .leading, spacing: 14) {
-                    featureItem(
-                        "building.columns.fill",
-                        "Autonomous Campus Nodes",
-                        "Universities run independent, self-governed servers."
-                    )
-                    featureItem(
-                        "envelope.badge.shield.half.filled",
-                        "Zero Central Emails",
-                        "Accounts and authentication are managed strictly by Clerk."
-                    )
-                    featureItem(
-                        "location.slash.fill",
-                        "Discrete Location",
-                        "Single GPS snapshot at boarding and arrival. No background tracking."
-                    )
-                    featureItem(
-                        "heart.fill",
-                        "Reciprocal Carpools",
-                        "Shared student rides with zero fares and zero payments."
-                    )
-                }
-                .padding(16)
-                .background(Color(.secondarySystemBackground))
-                .clipShape(RoundedRectangle(cornerRadius: 16))
-                .padding(.horizontal, 20)
-
-                Spacer(minLength: 16)
-
-                // Clerk Authentication Buttons
-                VStack(spacing: 12) {
-                    Button {
-                        showAuthSheet = true
-                    } label: {
-                        HStack {
-                            Image(systemName: "lock.shield.fill")
-                            Text("Sign In with Clerk")
-                        }
-                        .frame(maxWidth: .infinity)
-                        .bold()
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .controlSize(.large)
-
-                    // Quick Simulator Demo Mode
-                    HStack(spacing: 12) {
-                        Button {
-                            enterDemoMode(role: .driver)
-                        } label: {
-                            Text("Demo as Driver")
-                                .font(.caption.bold())
-                                .frame(maxWidth: .infinity)
-                        }
-                        .buttonStyle(.bordered)
-                        .tint(.secondary)
-
-                        Button {
-                            enterDemoMode(role: .rider)
-                        } label: {
-                            Text("Demo as Rider")
-                                .font(.caption.bold())
-                                .frame(maxWidth: .infinity)
-                        }
-                        .buttonStyle(.bordered)
-                        .tint(.secondary)
-                    }
-                }
-                .padding(.horizontal, 20)
-                .padding(.bottom, 24)
+            Button("Sign in") {
+                showAuthSheet = true
             }
-            .frame(maxWidth: .infinity)
+            .buttonStyle(.borderedProminent)
+
+            #if DEBUG
+            HStack(spacing: 16) {
+                Button("Demo Driver") {
+                    enterDemoMode(role: .driver)
+                }
+                Text("•")
+                    .foregroundStyle(.tertiary)
+                Button("Demo Rider") {
+                    enterDemoMode(role: .rider)
+                }
+            }
+            .font(.caption)
+            .foregroundStyle(.secondary)
+            .padding(.top, 8)
+            #endif
         }
         .sheet(isPresented: $showAuthSheet) {
-            NavigationStack {
-                AuthView()
-                    .navigationTitle("Sign In")
-                    .navigationBarTitleDisplayMode(.inline)
-                    .toolbar {
-                        ToolbarItem(placement: .cancellationAction) {
-                            Button("Close") { showAuthSheet = false }
-                        }
-                    }
-            }
-        }
-    }
-
-    private func featureItem(_ icon: String, _ title: String, _ desc: String) -> some View {
-        HStack(alignment: .top, spacing: 12) {
-            Image(systemName: icon)
-                .font(.body)
-                .foregroundStyle(Color.accentColor)
-                .frame(width: 24)
-                .padding(.top, 2)
-
-            VStack(alignment: .leading, spacing: 2) {
-                Text(title)
-                    .font(.caption.bold())
-                Text(desc)
-                    .font(.caption2)
-                    .foregroundStyle(.secondary)
-            }
+            AuthView()
         }
     }
 
