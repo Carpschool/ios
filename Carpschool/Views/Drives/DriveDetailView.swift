@@ -106,6 +106,7 @@ struct DriveDetailView: View {
                 Marker("Pickup \(Fmt.clock(p.time))", systemImage: "figure.wave", coordinate: p.pickup.coordinate).tint(.highlight)
             }
         }
+        .safeAreaPadding(8)
         .mapStyle(.standard(pointsOfInterest: .excludingAll))
         .accessibilityLabel("Corridor map")
     }

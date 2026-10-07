@@ -74,6 +74,7 @@ struct NewCommuteView: View {
             }
             if let error { Section { Label(error, systemImage: "exclamationmark.circle").foregroundStyle(.red) } }
         }
+        .contentMargins(.bottom, 48, for: .scrollContent)
         .navigationTitle(kind == .drive ? "Post a Drive" : "Request a Ride")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -101,6 +102,7 @@ struct NewCommuteView: View {
                 if let h = home { Marker(h.label, systemImage: "house.fill", coordinate: h.location.coordinate).tint(.brand) }
                 if let c = model.meta?.campusPoint.coordinate { Marker("School", systemImage: "building.columns.fill", coordinate: c).tint(.highlight) }
             }
+        .safeAreaPadding(8)
             .id(route.distance)
         } else {
             ZStack { Color(.tertiarySystemFill); if routeError == nil && home != nil { ProgressView() } }

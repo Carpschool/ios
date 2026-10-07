@@ -100,6 +100,7 @@ struct PinMap: View {
         Map(initialPosition: .region(.init(center: coordinate, latitudinalMeters: 350, longitudinalMeters: 350)), interactionModes: []) {
             Marker(title, systemImage: "figure.wave", coordinate: coordinate).tint(.highlight)
         }
+        .safeAreaPadding(8)
         .frame(height: height)
         .accessibilityLabel("\(title) location map")
     }
