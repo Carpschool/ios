@@ -68,7 +68,14 @@ struct ChatView: View {
             .onChange(of: items.count) { withAnimation { proxy.scrollTo("end") } }
         }
         .background(Color(.systemGroupedBackground))
-        .safeAreaInset(edge: .bottom) { if isOpen { composer } }
+        .safeAreaInset(edge: .bottom) {
+            if isOpen { composer }
+            else if let n = negotiation, n.status != "locked", socket.lockedDrive == nil {
+                Label(n.status == "cancelled" ? "This chat closed when the ride was cancelled." : "This chat is closed.", systemImage: "lock")
+                    .font(.footnote).foregroundStyle(.secondary)
+                    .frame(maxWidth: .infinity).padding(.vertical, 12).background(.bar)
+            }
+        }
         .navigationTitle(negotiation == nil ? "Chat" : "\(model.isDriver ? "Rider" : "Driver") \(Fmt.shortId(other))")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
