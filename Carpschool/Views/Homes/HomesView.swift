@@ -28,6 +28,7 @@ struct HomesView: View {
                                 MapCircle(center: h.location.coordinate, radius: h.walkingRadius).foregroundStyle(Color.brand.opacity(0.2)).stroke(Color.brand, lineWidth: 1)
                                 Annotation("", coordinate: h.location.coordinate) { Circle().fill(Color.brand).frame(width: 10, height: 10) }
                             }
+        .safeAreaPadding(8)
                             .frame(width: 64, height: 64)
                             .clipShape(.rect(cornerRadius: 12))
                             .allowsHitTesting(false)
@@ -91,6 +92,7 @@ struct HomeEditorView: View {
     @State private var center: CLLocationCoordinate2D?
     @State private var camera: MapCameraPosition = .automatic
     @State private var query = ""
+    @State private var searching = false
     @State private var results: [MKMapItem] = []
     @State private var busy = false
     @State private var error: String?
@@ -152,7 +154,7 @@ struct HomeEditorView: View {
                 .frame(height: 260)
                 .scrollDisabled(true)
             }
-            .searchable(text: $query, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search address")
+            .searchable(text: $query, isPresented: $searching, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search address")
             .task(id: query) { await search() }
             .navigationTitle(isEdit ? "Edit Home" : "Add Home")
             .navigationBarTitleDisplayMode(.inline)
@@ -192,6 +194,7 @@ struct HomeEditorView: View {
     }
 
     private func pick(_ item: MKMapItem) {
+        searching = false
         withAnimation { camera = .region(.init(center: item.placemark.coordinate, latitudinalMeters: 500, longitudinalMeters: 500)) }
         query = ""
         results = []
