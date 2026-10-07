@@ -16,3 +16,8 @@ DerivedData/
 
 # macOS
 .DS_Store
+
+# Local config
+Config/Secrets.xcconfig
+.env
+Carpschool/Info.plist

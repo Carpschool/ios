@@ -1,0 +1,4 @@
+// Public build settings. Real values go in Secrets.xcconfig (gitignored); copy Secrets.example.xcconfig.
+CENTRAL_URL = https:/$()/central.example.com
+CLERK_PUBLISHABLE_KEY = pk_test_replace_me
+#include? "Secrets.xcconfig"
