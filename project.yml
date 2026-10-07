@@ -47,6 +47,8 @@ targets:
       ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
       ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
       CODE_SIGN_ENTITLEMENTS: Carpschool/Carpschool.entitlements
+    scheme:
+      testTargets: [CarpschoolUITests]
     dependencies:
       - sdk: MapKit.framework
       - sdk: CoreLocation.framework
@@ -55,3 +57,14 @@ targets:
         product: ClerkKit
       - package: Clerk
         product: ClerkKitUI
+
+  CarpschoolUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources: [CarpschoolUITests]
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: ca.carpschool.ios.uitests
+      GENERATE_INFOPLIST_FILE: YES
+      TEST_TARGET_NAME: Carpschool
+    dependencies:
+      - target: Carpschool
