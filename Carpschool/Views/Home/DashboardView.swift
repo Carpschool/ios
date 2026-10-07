@@ -127,7 +127,7 @@ struct DashboardView: View {
             HomeEditorView(target: .new) { msg in toast = Toast(text: msg); Task { await load() } }
         }
         .confirmationDialog("Cancel this request?", isPresented: .init(get: { cancelTarget != nil }, set: { if !$0 { cancelTarget = nil } }), titleVisibility: .visible) {
-            Button("Cancel Request", role: .destructive) { Task { await cancel() } }
+            Button("Cancel Request", role: .destructive) { let r = cancelTarget; Task { await cancel(r) } }
         } message: { Text("Drivers will no longer see it.") }
         .toast($toast)
     }
@@ -222,8 +222,8 @@ struct DashboardView: View {
         if !driver { offers = (try? await model.get([RiderOffer].self, "/matches")) ?? offers }
     }
 
-    private func cancel() async {
-        guard let r = cancelTarget else { return }
+    private func cancel(_ r: Commute?) async {
+        guard let r else { return }
         do { try await model.send("/requests/" + r.id, method: "DELETE"); toast = Toast(text: "Request cancelled"); await load() }
         catch { toast = Toast(text: error.localizedDescription, isError: true) }
     }

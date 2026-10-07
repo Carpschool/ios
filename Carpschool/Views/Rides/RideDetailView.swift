@@ -56,10 +56,10 @@ struct RideDetailView: View {
             BoardSheet(rideId: id, passenger: p) { msg in toast = Toast(text: msg); Task { await load() } }
         }
         .confirmationDialog("Complete drop-off?", isPresented: .init(get: { dropping != nil }, set: { if !$0 { dropping = nil } }), titleVisibility: .visible) {
-            Button("Complete") { Task { await dropoff() } }
+            Button("Complete") { let p = dropping; Task { await dropoff(p) } }
         } message: { Text("We'll save one location snapshot and mark the ride done.") }
         .confirmationDialog(driver ? "Remove this rider?" : "Leave this carpool?", isPresented: .init(get: { leaving != nil }, set: { if !$0 { leaving = nil } }), titleVisibility: .visible) {
-            Button(driver ? "Remove Rider" : "Leave Carpool", role: .destructive) { Task { await leave() } }
+            Button(driver ? "Remove Rider" : "Leave Carpool", role: .destructive) { let p = leaving; Task { await leave(p) } }
         } message: {
             Text(driver ? "Their seat opens up and they get an email." : "Your seat is released and the driver gets an email. Your request goes back into the pool.")
         }
@@ -87,7 +87,7 @@ struct RideDetailView: View {
                         if let pin {
                             VStack(spacing: 4) {
                                 Text("BOARDING PIN").font(.caption.weight(.semibold)).tracking(1.5).opacity(0.7)
-                                Text(pin)
+                                Text(pin).accessibilityIdentifier("boardingPIN")
                                     .font(.system(size: 56, weight: .heavy, design: .monospaced))
                                     .tracking(14)
                                     .foregroundStyle(.highlight)
@@ -141,6 +141,7 @@ struct RideDetailView: View {
                 }
                 if d.routeCoordinates.count > 1 { MapPolyline(coordinates: d.routeCoordinates).stroke(Color.brand.opacity(0.6), lineWidth: 4) }
             }
+        .safeAreaPadding(8)
             .frame(height: 240)
             .clipShape(.rect(cornerRadius: 18))
             .accessibilityLabel("Pickups in order")
@@ -196,8 +197,8 @@ struct RideDetailView: View {
         catch { toast = Toast(text: error.localizedDescription, isError: true) }
     }
 
-    private func dropoff() async {
-        guard let p = dropping else { return }
+    private func dropoff(_ p: Passenger?) async {
+        guard let p else { return }
         let loc = await LocationSnapshot.here(fallback: p.pickup)
         do {
             try await model.send("/carpools/\(id)/dropoff", body: ["rider": p.rider, "location": loc.point.json])
@@ -206,8 +207,8 @@ struct RideDetailView: View {
         } catch { toast = Toast(text: error.localizedDescription, isError: true) }
     }
 
-    private func leave() async {
-        guard let p = leaving else { return }
+    private func leave(_ p: Passenger?) async {
+        guard let p else { return }
         do {
             try await model.send("/carpools/\(id)/leave", body: ["rider": p.rider])
             toast = Toast(text: driver ? "Rider removed" : "You left the carpool")
