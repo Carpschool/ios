@@ -49,6 +49,7 @@ struct HomesView: View {
             }
         }
         .navigationTitle("Homes")
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             if let homes, homes.count < (model.meta?.limits.homes ?? 3) {
                 Button("Add Home", systemImage: "plus") { editing = .new }

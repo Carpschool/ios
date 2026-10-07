@@ -67,7 +67,7 @@ struct MainTabView: View {
             NavigationStack(path: $router.home) { DashboardView().appDestinations() }
                 .tabItem { Label("Home", systemImage: "house") }.tag(AppTab.home)
             NavigationStack(path: $router.rides) { RidesView().appDestinations() }
-                .tabItem { Label("Rides", systemImage: "ticket") }.tag(AppTab.rides)
+                .tabItem { Label("Rides", systemImage: "car.2") }.tag(AppTab.rides)
             NavigationStack(path: $router.chats) { ChatsView().appDestinations() }
                 .tabItem { Label("Chats", systemImage: "bubble.left.and.bubble.right") }.tag(AppTab.chats)
             NavigationStack(path: $router.settings) { SettingsView().appDestinations() }

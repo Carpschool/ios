@@ -13,7 +13,7 @@ struct RidesView: View {
         Group {
             if let pools {
                 if pools.isEmpty {
-                    ContentUnavailableView("No rides yet", systemImage: "ticket",
+                    ContentUnavailableView("No rides yet", systemImage: "car.2",
                                            description: Text("Once you and a \(model.isDriver ? "rider" : "driver") agree on a pickup, your ride shows up here."))
                 } else {
                     List {
