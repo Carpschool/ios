@@ -52,7 +52,7 @@ struct RootView: View {
             DebugHooks.route(router)
             #endif
         }
-        .task(id: clerk.user?.id) {
+        .task(id: "\(clerk.user?.id ?? "")|\(model.school?.schoolCode ?? "")") {
             if clerk.user == nil { model.signedOut() }
             else if model.school != nil { await model.refreshMe() }
         }

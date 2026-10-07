@@ -112,7 +112,7 @@ struct DashboardView: View {
         .background(Color(.systemGroupedBackground))
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
-                NavigationLink(value: Route.homes) { Label("Homes", systemImage: "house") }
+                NavigationLink(value: Route.homes) { Text("My Homes") }
             }
         }
         .refreshable { await load() }
