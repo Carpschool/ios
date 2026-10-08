@@ -1,47 +1,54 @@
 {
-  "fill": {
-    "linear-gradient": [
-      "srgb:0.14902,0.22745,0.38431,1.00000",
-      "srgb:0.07451,0.12549,0.23137,1.00000"
-    ]
-  },
+  "fill-specializations": [
+    {
+      "value": {
+        "solid": "srgb:0.96078,0.94118,0.90196,1"
+      }
+    },
+    {
+      "appearance": "light",
+      "value": {
+        "solid": "srgb:0.96078,0.94118,0.90196,1"
+      }
+    },
+    {
+      "appearance": "dark",
+      "value": {
+        "solid": "srgb:0.07451,0.12549,0.23137,1"
+      }
+    }
+  ],
   "groups": [
     {
       "layers": [
         {
-          "glass": true,
-          "image-name": "dot.png",
-          "name": "dot"
+          "blend-mode": "normal",
+          "image-name-specializations": [
+            {
+              "value": "refined-light.png"
+            },
+            {
+              "appearance": "light",
+              "value": "refined-light.png"
+            },
+            {
+              "appearance": "dark",
+              "value": "refined-dark.png"
+            }
+          ],
+          "name": "Faceted C",
+          "glass": false
         }
       ],
-      "name": "Pin",
+      "lighting": "combined",
       "shadow": {
-        "kind": "neutral",
-        "opacity": 0.5
+        "kind": "none",
+        "opacity": 0
       },
-      "specular": true,
+      "specular": false,
       "translucency": {
         "enabled": false,
-        "value": 0.5
-      }
-    },
-    {
-      "layers": [
-        {
-          "glass": true,
-          "image-name": "road.png",
-          "name": "road"
-        }
-      ],
-      "name": "Road",
-      "shadow": {
-        "kind": "neutral",
-        "opacity": 0.4
-      },
-      "specular": true,
-      "translucency": {
-        "enabled": true,
-        "value": 0.3
+        "value": 0
       }
     }
   ],
